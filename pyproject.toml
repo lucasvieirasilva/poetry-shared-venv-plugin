@@ -5,6 +5,7 @@ description = "Poetry Plugin for Bundling Local Dependencies"
 authors = ["Lucas Vieira <lucas.vieira94@outlook.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/lucasvieirasilva/poetry-shared-venv-plugin"
 
   [[tool.poetry.packages]]
   include = "poetry_shared_venv_plugin"

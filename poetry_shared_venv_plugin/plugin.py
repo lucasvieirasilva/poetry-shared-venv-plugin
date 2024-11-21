@@ -67,7 +67,11 @@ class SharedVenvPlugin(ApplicationPlugin):
         self.io = event.io
         self.config = self._get_config(self.poetry.pyproject.data)
 
-        if isinstance(event.command, (InstallCommand, LockCommand)) and self.config["enabled"] and self.config["root"]:
+        if (
+            isinstance(event.command, (InstallCommand, LockCommand, AddCommand, UpdateCommand, RemoveCommand))
+            and self.config["enabled"]
+            and self.config["root"]
+        ):
             self.load_workspace_dependencies(self.poetry, self.config)
 
         elif isinstance(event.command, (InstallCommand, LockCommand, AddCommand, UpdateCommand, RemoveCommand)):

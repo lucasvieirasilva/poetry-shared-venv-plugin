@@ -108,6 +108,34 @@ class SharedVenvPlugin(ApplicationPlugin):
                         )
                     )
 
+                    root_lock_repo = root_poetry.locker.locked_repository()
+                    project_lock_repo = self.poetry.locker.locked_repository()
+
+                    changed = False
+                    for idx, package in enumerate(project_lock_repo.packages):
+                        if package.source_type == "directory":
+                            continue
+
+                        found_packages = [pkg for pkg in root_lock_repo._packages if pkg.name == package.name]
+                        if len(found_packages) == 0:
+                            continue
+
+                        if len(found_packages) == 1 and found_packages[0].version != package.version:
+                            project_lock_repo._packages[idx] = found_packages[0]
+                            changed = True
+                            continue
+
+                        for found_package in found_packages:
+                            if (
+                                found_package.name == package.name
+                                and found_package.version.major == package.version.major
+                            ):
+                                project_lock_repo._packages[idx] = found_package
+                                changed = True
+
+                    if changed:
+                        self.poetry.locker.set_lock_data(self.poetry.package, project_lock_repo.packages)
+
                     original_handle()
                     dependee_graph = self.get_dependee_graph(root_poetry)
 

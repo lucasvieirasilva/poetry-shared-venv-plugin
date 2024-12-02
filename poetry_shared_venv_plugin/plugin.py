@@ -179,7 +179,7 @@ class SharedVenvPlugin(ApplicationPlugin):
             )
             lock_result = lock_command.run(
                 cleo.io.io.IO(
-                    input=cleo.io.inputs.argv_input.ArgvInput(argv=["--no-update"]),
+                    input=cleo.io.inputs.argv_input.ArgvInput(argv=["lock", "--no-update"]),
                     output=event.io.output,
                     error_output=event.io.error_output,
                 )
@@ -213,7 +213,7 @@ class SharedVenvPlugin(ApplicationPlugin):
         )
         lock_result = lock_command.run(
             cleo.io.io.IO(
-                input=cleo.io.inputs.argv_input.ArgvInput(argv=["--no-update"]),
+                input=cleo.io.inputs.argv_input.ArgvInput(argv=["lock", "--no-update"]),
                 output=event.io.output,
                 error_output=event.io.error_output,
             )
@@ -241,7 +241,7 @@ class SharedVenvPlugin(ApplicationPlugin):
             )
             return install_command.run(
                 cleo.io.io.IO(
-                    input=cleo.io.inputs.argv_input.ArgvInput(argv=[]),
+                    input=cleo.io.inputs.argv_input.ArgvInput(argv=['install']),
                     output=event.io.output,
                     error_output=event.io.error_output,
                 )

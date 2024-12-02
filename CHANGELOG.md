@@ -1,12 +1,25 @@
 # CHANGELOG
 
 
+## v0.2.3 (2024-12-02)
+
+### Bug Fixes
+
+- Update command arguments for lock and install
+  ([`affc67b`](https://github.com/lucasvieirasilva/poetry-shared-venv-plugin/commit/affc67b25756598af229dfb358f30ecbce8fe8bc))
+
+
 ## v0.2.2 (2024-11-25)
 
 ### Bug Fixes
 
 - Synchronize package versions between project and root lock repositories
   ([`27c2a00`](https://github.com/lucasvieirasilva/poetry-shared-venv-plugin/commit/27c2a0028e845d449f9291a37d9f1525656c7c04))
+
+### Chores
+
+- **release**: 0.2.2 [skip ci]
+  ([`11f8441`](https://github.com/lucasvieirasilva/poetry-shared-venv-plugin/commit/11f844164dd9fd44763592783e9b9d69d0ec05d7))
 
 
 ## v0.2.1 (2024-11-21)
